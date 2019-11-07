@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 class CalculatorTest {
 
     Calculator calculator = new Calculator();
+    Matrix matrix = new Matrix();
 
     @Test
     void sum() {
@@ -78,14 +79,14 @@ class CalculatorTest {
     }
 
     @Test
-    void computeCircleArea1() {
+    void computeCircleArea2() {
         double expected = 0;
         double actual = calculator.computeCircleArea(0);
         assertEquals(expected, actual, "The computeCircleArea method return circle area");
     }
 
     @Test
-    void computeCircleArea2() {
+    void computeCircleArea3() {
         double expected = Infinity;
         double actual = calculator.computeCircleArea(-5);
         assertEquals(expected, actual, "The computeCircleArea method return circle area");
@@ -99,14 +100,14 @@ class CalculatorTest {
     }
 
     @Test
-    void computeRectangleArea1() {
+    void computeRectangleArea2() {
         double expected = 0;
         double actual = calculator.computeRectangleArea(4,0);
         assertEquals(expected, actual, "The computeRectangleArea method return rectangle area");
     }
 
     @Test
-    void computeRectangleArea2() {
+    void computeRectangleArea3() {
         double expected = Infinity;
         double actual = calculator.computeRectangleArea(4,-6);
         assertEquals(expected, actual, "The computeRectangleArea method return rectangle area");
@@ -120,14 +121,14 @@ class CalculatorTest {
     }
 
     @Test
-    void logarithmE1() {
+    void logarithmE2() {
         double expected = Infinity;
         double actual = calculator.logarithmE(0);
         assertEquals(expected, actual, "The logarithmE method return natural logarithm");
     }
 
     @Test
-    void logarithmE2() {
+    void logarithmE3() {
         double expected = Infinity;
         double actual = calculator.logarithmE(-10);
         assertEquals(expected, actual, "The logarithmE method return natural logarithm");
@@ -141,21 +142,21 @@ class CalculatorTest {
     }
 
     @Test
-    void logarithm1() {
+    void logarithm2() {
         double expected = Infinity;
         double actual = calculator.logarithm(0,9);
         assertEquals(expected,actual,"The logarithm method return logarithm");
     }
 
     @Test
-    void logarithm2() {
+    void logarithm3() {
         double expected = Infinity;
         double actual = calculator.logarithm(1,9);
         assertEquals(expected,actual,"The logarithm method return logarithm");
     }
 
     @Test
-    void logarithm3() {
+    void logarithm4() {
         double expected = Infinity;
         double actual = calculator.logarithm(3,-1);
         assertEquals(expected,actual,"The logarithm method return logarithm");
@@ -169,7 +170,7 @@ class CalculatorTest {
     }
 
     @Test
-    void quadraticEquation1() {
+    void quadraticEquation2() {
         double [] expected = new double[]{Infinity};
         double [] actual = calculator.quadraticEquation(14, 1, 5, 0);
         assertArrayEquals(expected,actual,"The quadraticEquation method return solutions of quadratic equation");
@@ -183,9 +184,63 @@ class CalculatorTest {
     }
 
     @Test
-    void cubicEquation1() {
+    void cubicEquation2() {
         double [] expected =  {-20.35832};
         double [] actual = calculator.cubicEquation(1, 20, -7, 6, 0);
         assertArrayEquals(expected,actual,"The cubicEquation method return solutions of cubic equation");
+    }
+
+    @Test
+    void sumMatrices() {
+        double[][] expected = {{5, 5}, {5, 5}};
+        double[][] matrix1 = {{1, 2}, {3, 4}};
+        double[][] matrix2 = {{4, 3}, {2, 1}};
+        double[][] actual = matrix.addMatrices(matrix1, matrix2);
+        assertArrayEquals(expected, actual, "The sum method sum two matrices");
+    }
+
+    @Test
+    void sumMatrices2() {
+        double[][] expected = {{Infinity}};
+        double[][] matrix1 = {{1, 2}, {3, 4},{2,2}};
+        double[][] matrix2 = {{4, 3}, {2, 1}};
+        double[][] actual = matrix.addMatrices(matrix1, matrix2);
+        assertArrayEquals(expected, actual, "The sum method sum two matrices");
+    }
+
+    @Test
+    void subMatrices() {
+        double[][] expected = {{-3,-1},{1,3}};
+        double[][] matrix1 = {{1, 2}, {3, 4}};
+        double[][] matrix2 = {{4, 3}, {2, 1}};
+        double[][] actual = matrix.subtractMatrices(matrix1, matrix2);
+        assertArrayEquals(expected, actual, "The sub method subtract two matrices");
+    }
+
+    @Test
+    void subMatrices2() {
+        double[][] expected = {{Infinity}};
+        double[][] matrix1 = {{1, 2}, {3, 4},{2,2}};
+        double[][] matrix2 = {{4, 3}, {2, 1}};
+        double[][] actual = matrix.subtractMatrices(matrix1, matrix2);
+        assertArrayEquals(expected, actual, "The sub method subtract two matrices");
+    }
+
+    @Test
+    void mulMatrices() {
+        double[][] expected = {{21, 24, 27}, {47, 54, 61}};
+        double[][] matrix1 = {{1, 2}, {3, 4}};
+        double[][] matrix2 = {{5, 6, 7}, {8, 9, 10}};
+        double[][] actual = matrix.multiplyMatrices(matrix1, matrix2);
+        assertArrayEquals(expected, actual, "The mul method multiply two matrices");
+    }
+
+    @Test
+    void mulMatrices2() {
+        double[][] expected = {{Infinity}};
+        double[][] matrix1 = {{1, 2, 6}, {3, 4, 6}};
+        double[][] matrix2 = {{5, 6, 7}, {8, 9, 10}};
+        double[][] actual = matrix.multiplyMatrices(matrix1, matrix2);
+        assertArrayEquals(expected, actual, "The mul method multiply two matrices");
     }
 }

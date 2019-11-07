@@ -123,74 +123,90 @@ public class Calculator {
     }
 
     public static void main(String[] args) {
-        System.out.println("1. Sum \n2. Subtraction \n3. Multiplication \n4. Division \n5. Compute Circle Area " +
-                "\n6. Compute Rectangle Area \n7. Natural Logarithm \n8. Logarithm \n9. Quadratic Equation " +
-                "\n10. Cubic Equation");
-        System.out.println(" Please, enter the number of function:");
-        Scanner in = new Scanner(System.in);
-        int fun = in.nextInt();
+        boolean cal = true;
 
         double result = 0;
         double [] results;
 
-        if(fun == 1){
-            System.out.println("Please, enter two parameters");
-            double x = in.nextDouble();
-            double y = in.nextDouble();
-            result = sum(x,y);
-        }else if(fun == 2){
-            System.out.println("Please, enter two parameters");
-            double x = in.nextDouble();
-            double y = in.nextDouble();
-            result = subtraction(x,y);
-        }else if(fun == 3){
-            System.out.println("Please, enter two parameters");
-            double x = in.nextDouble();
-            double y = in.nextDouble();
-            result = multiplication(x,y);
-        }else if(fun == 4){
-            System.out.println("Please, enter two parameters");
-            double x = in.nextDouble();
-            double y = in.nextDouble();
-            result = division(x,y);
-        }else if(fun == 5) {
-            System.out.println("Please, enter radius");
-            double radius = in.nextDouble();
-            result = computeCircleArea(radius);
-        }else if(fun == 6){
-            System.out.println("Please, enter two parameters");
-            double x = in.nextDouble();
-            double y = in.nextDouble();
-            result = computeRectangleArea(x,y);
-        }else if(fun == 7) {
-            System.out.println("Please, enter one parameter");
-            int x = in.nextInt();
-            result = logarithmE(x);
-        }else if(fun == 8){
-            System.out.println("Please, enter two parameters");
-            int x = in.nextInt();
-            int y = in.nextInt();
-            result = logarithm(x,y);
-        }else if(fun == 9){
-            System.out.println("Please, enter a, b, c and y parameters");
-            double a = in.nextDouble();
-            double b = in.nextDouble();
-            double c = in.nextDouble();
-            double y = in.nextDouble();
-            results = quadraticEquation(a,b,c,y);
-            System.out.println("x1 = " + results[0] + " x2 = " + results[1]);
-        }else if(fun == 10){
-            System.out.println("Please, enter a, b, c, d and y parameters");
-            double a = in.nextDouble();
-            double b = in.nextDouble();
-            double c = in.nextDouble();
-            double d = in.nextDouble();
-            double y = in.nextDouble();
-            results = cubicEquation(a,b,c,d,y);
-            System.out.println("x1 = " + results[0] + " x2 = " + results[1] + " x3 = " + results[2]);
-        } else{
-            System.out.println("Function is incorrect");
+        while( cal == true ){
+            System.out.println("1. Sum \n2. Subtraction \n3. Multiplication \n4. Division \n5. Compute Circle Area " +
+                    "\n6. Compute Rectangle Area \n7. Natural Logarithm \n8. Logarithm \n9. Quadratic Equation " +
+                    "\n10. Cubic Equation" + "\n11. Matrices" + "\n12. Exit");
+            System.out.println(" Please, enter the number of function:");
+            Scanner in = new Scanner(System.in);
+            int fun = in.nextInt();
+
+            if(fun == 1){
+                System.out.println("Please, enter two parameters");
+                double x = in.nextDouble();
+                double y = in.nextDouble();
+                result = sum(x,y);
+                System.out.println(result);
+            }else if(fun == 2){
+                System.out.println("Please, enter two parameters");
+                double x = in.nextDouble();
+                double y = in.nextDouble();
+                result = subtraction(x,y);
+                System.out.println(result);
+            }else if(fun == 3){
+                System.out.println("Please, enter two parameters");
+                double x = in.nextDouble();
+                double y = in.nextDouble();
+                result = multiplication(x,y);
+                System.out.println(result);
+            }else if(fun == 4){
+                System.out.println("Please, enter two parameters");
+                double x = in.nextDouble();
+                double y = in.nextDouble();
+                result = division(x,y);
+                System.out.println(result);
+            }else if(fun == 5) {
+                System.out.println("Please, enter radius");
+                double radius = in.nextDouble();
+                result = computeCircleArea(radius);
+                System.out.println(result);
+            }else if(fun == 6){
+                System.out.println("Please, enter two parameters");
+                double x = in.nextDouble();
+                double y = in.nextDouble();
+                result = computeRectangleArea(x,y);
+                System.out.println(result);
+            }else if(fun == 7) {
+                System.out.println("Please, enter one parameter");
+                int x = in.nextInt();
+                result = logarithmE(x);
+                System.out.println(result);
+            }else if(fun == 8){
+                System.out.println("Please, enter two parameters");
+                int x = in.nextInt();
+                int y = in.nextInt();
+                result = logarithm(x,y);
+                System.out.println(result);
+            }else if(fun == 9){
+                System.out.println("Please, enter a, b, c and y parameters");
+                double a = in.nextDouble();
+                double b = in.nextDouble();
+                double c = in.nextDouble();
+                double y = in.nextDouble();
+                results = quadraticEquation(a,b,c,y);
+                System.out.println("x1 = " + results[0] + " x2 = " + results[1]);
+            }else if(fun == 10){
+                System.out.println("Please, enter a, b, c, d and y parameters");
+                double a = in.nextDouble();
+                double b = in.nextDouble();
+                double c = in.nextDouble();
+                double d = in.nextDouble();
+                double y = in.nextDouble();
+                results = cubicEquation(a,b,c,d,y);
+                System.out.println("x1 = " + results[0] + " x2 = " + results[1] + " x3 = " + results[2]);
+            }else if (fun == 11) {
+                Matrix Matrix = new Matrix();
+                Matrix.matrixMain();
+            }else if (fun == 12) {
+                cal = false;
+            }else{
+                System.out.println("Function is incorrect");
+            }
         }
-        System.out.println(result);
     }
 }
